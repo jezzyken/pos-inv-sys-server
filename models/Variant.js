@@ -7,6 +7,11 @@ const variantSchema = new mongoose.Schema(
     },
   },
   {
+    types: {
+      type: [String],
+    },
+  },
+  {
     timestamp: true,
   }
 );
