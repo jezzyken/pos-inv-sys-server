@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    productCode: {
+    sku: {
       type: String,
     },
     brand: {
@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema(
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
-    },
+    },  
     criticalLimit: {
       type: String,
       default: 5,
@@ -26,24 +26,17 @@ const productSchema = new mongoose.Schema(
     image: {
       type: String,
     },
-    prices: [
-      {
-        unit: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Unit",
-        },
-        variant: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Variant",
-        },
-        itemPrice: {
-          type: String,
-        },
-        salePrice: {
-          type: String,
-        },
-      },
-    ],
+    type: {
+      type: String,
+      enum: ["Standard", "Variant"]
+    },
+    productUnit: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Unit",
+    },
+    saleUnit: {
+      type: String
+    },
   },
   {
     timestamps: true,
